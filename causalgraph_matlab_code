@@ -12,3 +12,14 @@ gg=digraph(source,Target,wt)
 p=plot(gg,'Layout',  'auto','LineStyle',    '-');colormap('winter');colorbar
 p.EdgeLabel= gg.Edges.Weight;
 p.EdgeCData=gg.Edges.Weight;
+
+% multiple edge label 
+flows=[0.08, 0.15, 0.01, 0.25, 0.29, 2347.80, 4.59, 2426.50, 1.91, 286.38, ...
+    0.68, 289.26, 2.89, 0.40, 0.34, 3.81];
+gg1=digraph(source,Target,flows)
+gg=digraph(source,Target,wt)
+edgelabelstr = string(gg1.Edges.Weight) + " ( " + string(gg.Edges.Weight)+")";
+p=plot(gg,'Layout',  'auto','LineStyle',    '-');colormap('winter');colorbar
+% p.EdgeLabel= gg.Edges.Weight;
+p.EdgeLabel= cellstr(edgelabelstr);
+p.EdgeCData=gg.Edges.Weight;
