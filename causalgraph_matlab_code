@@ -1,0 +1,14 @@
+% Target=[1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4]
+% source=[2,3,4,5,1,3,4,5,1,2,4,5,1,2,3,5]
+wt=[0.77	0.70	0.92	0.97	0.59	0.00	0.03	0.00	0.17 ...
+    0.00	0.41	0.00	0.09	0.53	0.56	0.28 ]
+
+Target=[{'Co2','Co2','Co2','Co2','PopG','PopG','PopG','PopG','GDP','GDP','GDP'...
+    'GDP','GTemp','GTemp','GTemp','GTemp'}]
+source=[{'PopG','GDP','GTemp','ALL','Co2','GDP','GTemp','ALL','Co2',...
+    'PopG','GTemp','ALL','Co2','PopG','GDP','ALL'}]
+
+gg=digraph(source,Target,wt)
+p=plot(gg,'Layout',  'auto','LineStyle',    '-');colormap('winter');colorbar
+p.EdgeLabel= gg.Edges.Weight;
+p.EdgeCData=gg.Edges.Weight;
